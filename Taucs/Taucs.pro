@@ -3,7 +3,7 @@ INCLUDEPATH += $$PWD/external/include
 DEPENDPATH += $$PWD/external/include
 
 #----------------------------------------------
-# EXPOSED RESOURCES
+# HEADERS EXPOSED BY THE LIBRARY
 #----------------------------------------------
 EXPOSED_HEADERS = TaucsMatrix.h TaucsSolver.h
 
