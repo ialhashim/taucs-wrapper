@@ -1,0 +1,4 @@
+.DS_Store
+Taucs/Taucs.framework/
+*-build-*
+*.pro.user
