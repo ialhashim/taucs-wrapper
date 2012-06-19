@@ -14,7 +14,7 @@ public:
     }
     virtual void applyLaplacianIteration(float damping=0.5f){
         foreach(Vertex v, mesh->vertices())
-            points[v] += damping * laplace[v];
+            points[v] += laplace[v]*damping;
     }
     Vector3VertexProperty computeLaplacianVectors(const string property="h:weight"){
         laplace = mesh->vertex_property<Vector3>(property);
@@ -163,8 +163,9 @@ public:
             eweight[e] = cotangentLaplacianWeight(e);
         return eweight;
     }
+    
     Vector3VertexProperty computeLaplacianVectors(const string property="v:laplace", bool autonormalize=true){
-        laplace = mesh->add_vertex_property<Vector3>(property);
+        laplace = mesh->vertex_property<Vector3>(property);
         foreach(Vertex v, mesh->vertices())
             laplace[v] = cotangentLaplacianVector(v,autonormalize);
         return laplace;

@@ -28,6 +28,7 @@
 #include <math.h>
 #include <limits>
 #include <cstring>
+#include <QDebug>
 
 #ifdef WIN32
     #undef min
@@ -475,6 +476,16 @@ typedef Vector<double,4> Vec4d;
 
 
 /// @}
+
+template <typename Scalar, int N>
+QDebug operator<<(QDebug dbg, const Vector<Scalar,N> &vec){
+    dbg.nospace() << "Vector(";
+    for (int i=0; i<N-1; i++)
+        dbg << vec[i] << " ";
+    dbg << vec[N-1];
+    dbg << ")";
+    return dbg.space();
+}
 
 //=============================================================================
 #endif // VECTOR_H

@@ -17,7 +17,16 @@ SOURCES += \
 HEADERS += \
     TaucsSolver.h \
     TaucsMatrix.h \
-    taucs_addon.h 
+    taucs_addon.h \  
+    TaucsException.h
+
+#----------------------------------------------
+# OPTIMIZATION
+#----------------------------------------------
+QMAKE_CXXFLAGS_RELEASE -= -O2
+QMAKE_CXXFLAGS_RELEASE += -O3
+QMAKE_LFLAGS_RELEASE -= -O1
+QMAKE_LFLAGS_RELEASE += -O3
 
 #----------------------------------------------
 # DEPENDENT LIBRARIES

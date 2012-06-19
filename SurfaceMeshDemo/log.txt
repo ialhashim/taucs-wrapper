@@ -1,0 +1,75 @@
+Starting /Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme...
+#vertices:  12128  
+Allocation:  0 ms 
+LHS Build time:  30 ms 
+Build RHS vector:  0 ms 
+Factorization: 0.282967s
+Premultiply RHS: 0.002023s
+Solve: 0.864866s
+Free: 0.002013s
+Factor & Solve:  1105 ms 
+Save back:  0 ms 
+Done! 
+/Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme exited with code 0
+
+Starting /Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme...
+#vertices:  24998  
+Allocation:  2 ms 
+LHS Build time:  73 ms 
+Build RHS vector:  0 ms 
+Factorization: 0.884828s
+Premultiply RHS: 0.003567s
+Solve: 2.23702s
+Free: 0.007962s
+Factor & Solve:  2957 ms 
+Save back:  0 ms 
+Done! 
+/Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme exited with code 0
+
+Starting /Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme...
+#vertices:  48518  
+Allocation:  4 ms 
+LHS Build time:  140 ms 
+Build RHS vector:  1 ms 
+Factorization: 1.68585s
+Premultiply RHS: 0.010915s
+Solve: 5.37639s
+Free: 0.018381s
+Factor & Solve:  6215 ms 
+Save back:  1 ms 
+Done! 
+/Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme exited with code 0
+
+Starting /Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme...
+#vertices:  99998  
+Allocation:  7 ms 
+LHS Build time:  245 ms 
+Build RHS vector:  2 ms 
+Factorization: 3.83192s
+Premultiply RHS: 0.016075s
+Solve: 12.7226s
+Free: 0.03238s
+Factor & Solve:  13640 ms 
+Save back:  1 ms 
+Done! 
+/Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme exited with code 0
+
+Starting /Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme...
+#vertices:  0  
+Assertion failed: (rows > 0), function TaucsMatrix, file ../Taucs/TaucsMatrix.cpp, line 76.
+The program has unexpectedly finished.
+/Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme exited with code 0
+
+Starting /Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme...
+#vertices:  194078  
+Allocation:  16 ms 
+LHS Build time:  555 ms 
+Build RHS vector:  5 ms 
+Factorization: 11.1377s
+Premultiply RHS: 0.03153s
+Solve: 46.6119s
+Free: 0.085858s
+Factor & Solve:  51560 ms 
+Save back:  26 ms 
+Done! 
+/Users/ata2/Developer/TaucsWrapper/SurfaceMeshDemo-build-desktop-Desktop_Qt_4_8_1_for_GCC__Qt_SDK__Debug/smoothme exited with code 0

@@ -1,4 +1,5 @@
 #pragma once
+#include "StarlabException.h"
 #include "SurfaceMeshModel.h"
 #include "SurfaceMeshTypes.h"
 #include "SurfaceMeshQForEachHelpers.h"
@@ -51,6 +52,17 @@ public:
         fnormal = mesh->get_face_property<Vector3>(FNORMAL);        
         elenght = mesh->get_edge_property<Scalar>(ELENGTH);
     }
+
+    /// @{ ADDED
+    Vector3VertexProperty getVector3VertexProperty(const string property){
+        if(!mesh->has_vertex_property<Vector3>(property)) throw MissingPropertyException(property);
+        return mesh->get_vertex_property<Vector3>(property);
+    }
+    ScalarVertexProperty getScalarVertexProperty(const string property){
+        if(!mesh->has_vertex_property<Scalar>(property)) throw MissingPropertyException(property);
+        return mesh->get_vertex_property<Scalar>(property);
+    }
+    /// @} ADDED
     
     ScalarVertexProperty scalarVertexProperty(const string property, Scalar init){
         return mesh->vertex_property<Scalar>(property,init);

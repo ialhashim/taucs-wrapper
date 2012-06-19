@@ -1,6 +1,5 @@
 #pragma once
 #include <string> 
-
 namespace SurfaceMeshTypes{
     /// Scalar type
     typedef double             Scalar;

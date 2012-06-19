@@ -14,12 +14,17 @@ mac{
 
 # USE SurfaceMeshModel
 INCLUDEPATH += $$PWD/SurfaceMeshModel
+DEPENDPATH += $$PWD/SurfaceMeshModel
 
 SOURCES += main.cpp \
     SurfaceMeshModel/Surface_mesh.cpp \
     SurfaceMeshModel/IO.cpp \
-    SurfaceMeshModel/IO_off.cpp
+    SurfaceMeshModel/IO_off.cpp \
+    SurfaceMeshModel/SurfaceMeshModel.cpp \
+    TaucsPoissonHelper.h
 
 HEADERS += \
     SurfaceMeshModel/Surface_mesh.h \
-    SurfaceMeshModel/properties.h
+    SurfaceMeshModel/properties.h \
+    SurfaceMeshModel/LaplacianHelper.h \
+    SurfaceMeshModel/Vector.h
