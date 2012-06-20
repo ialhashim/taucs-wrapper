@@ -12,19 +12,16 @@
 
 int main(int argc, char* argv[]){   
     QCoreApplication a(argc, argv);
-    char *input, *output;
     
-    if(argc!=3){
+    if(argc<2){
         qDebug() << "Wrong parameters!!! Provided: " << argc;
-        qDebug() << "Usage:\n  smoothme in.off out.off";
-    } else {
-        input = argv[1];
-        output = argv[2];        
-    }
+        qDebug() << "Usage:\n  smoothme in.off [out.off]";
+        exit(0);
+    } 
     
     /// Read mesh model
     SurfaceMeshModel model;
-    bool status = model.read(input);
+    bool status = model.read(argv[1]);
     if(status==false){
         qDebug() << "cannot read model";
         exit(0);
@@ -48,8 +45,9 @@ int main(int argc, char* argv[]){
 #endif
     
     /// Write to output
-    model.write(output);
+    if(argc==3)
+        model.write(argv[2]);
     
-    qDebug() << "Done!";
+    // qDebug() << "Done!";
     return 0;
 }

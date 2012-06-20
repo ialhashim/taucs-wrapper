@@ -3,3 +3,4 @@ Taucs/Taucs.framework/
 *-build-*
 *.pro.user
 SurfaceMeshDemo/smoothed.off
+smoothme

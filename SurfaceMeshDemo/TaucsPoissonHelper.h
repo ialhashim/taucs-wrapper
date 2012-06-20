@@ -65,7 +65,7 @@ private:
     /// eproperty:     value of weights for L(i,j)
     /// vconstraint:   what's the strength of the initial guess?
     void create_lhs(string eproperty, string vconstraint){
-        qDebug() << "#vertices: " << mesh->n_vertices() << "";
+        // qDebug() << "#vertices: " << mesh->n_vertices() << "";
         
         /// Retrieve edge weights
         ScalarEdgeProperty eweight = mesh->get_edge_property<Scalar>(eproperty);

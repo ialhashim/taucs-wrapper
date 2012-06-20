@@ -5,6 +5,9 @@ QT -= gui
 CONFIG += console
 CONFIG -= app_bundle
 
+# DEPLOY IN SRC DIR
+DESTDIR = $$PWD
+
 # Import framework
 mac{
     QMAKE_CXXFLAGS += -F$$(HOME)/Library/Frameworks

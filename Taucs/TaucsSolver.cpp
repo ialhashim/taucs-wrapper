@@ -143,7 +143,7 @@ void TaucsSolver::solve_linear_least_square(const TaucsMatrix& matrix, const Std
         if(fact_retval != TAUCS_SUCCESS) throw TaucsException("Factorization Failed");
     }
     end = clock();
-    cerr << "Factorization: " << (end-start)/CPS << "s" << endl;
+    double tfact = (end-start)/CPS;
     
     /// Reuse this memory for the three solutions
     start = clock();
@@ -166,8 +166,11 @@ void TaucsSolver::solve_linear_least_square(const TaucsMatrix& matrix, const Std
         if (solve_retval != TAUCS_SUCCESS) throw TaucsException("ERROR!!!! LL^t Solve Failed");
     }
     end = clock();
-    cerr << "Solve: " << (end-start)/CPS << "s" << endl;
-    
+    double tsolve = (end-start)/CPS;
+
+    /// Outputs times
+    cout << num_col << ", " << tfact << ", " << tsolve << "\n";
+
     
     /// I am done.. free up
     start = clock();
