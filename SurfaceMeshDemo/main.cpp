@@ -24,8 +24,11 @@ int main(int argc, char* argv[]){
     
     /// Read mesh model
     SurfaceMeshModel model;
-    model.read(input);
-    
+    bool status = model.read(input);
+    if(status==false){
+        qDebug() << "cannot read model";
+        exit(0);
+    }
     
 #if 0
     /// Compute cotangent laplacian weights
@@ -37,17 +40,11 @@ int main(int argc, char* argv[]){
     }
 #else
     /// Compute cotangent laplacian weights
-    try{
-        CotangentLaplacianHelper clh(&model);
-        clh.computeCotangentEdgeWeights("e:weight");
-        TaucsPoissonHelper tph(&model);
-        model.add_vertex_property<Scalar>("v:constraint",.01);
-        tph.setup("e:weight","v:constraint");
-        tph.solve(VPOINT,"v:constraint",VPOINT);
-    } catch( std::exception& e ){
-        cerr << e.what() << endl;
-    }
-
+    CotangentLaplacianHelper clh(&model);
+    clh.computeCotangentEdgeWeights("e:weight");
+    TaucsPoissonHelper tph(&model);
+    model.add_vertex_property<Scalar>("v:constraint",.01);
+    tph.solve("e:weight","v:constraint",VPOINT,VPOINT);
 #endif
     
     /// Write to output

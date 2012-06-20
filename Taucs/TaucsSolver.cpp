@@ -131,12 +131,15 @@ void TaucsSolver::solve_linear_least_square(const TaucsMatrix& matrix, const Std
 	taucs_ccs_matrix* At = TaucsAddOn::MatrixTranspose(A);
 	taucs_ccs_matrix* AtA = TaucsAddOn::Mul2NonSymmMatSymmResult(At, A);
     
+    /// Options
+    char* factor[] = {"taucs.factor.LLT=true", NULL};
+    char* solve [] = {"taucs.factor=false", NULL};
+    
     /// Factorize the matrix using LL^t just once
     start = clock();
     void* F = NULL;
     if(1){
-        char* options[] = {"taucs.factor.LLT=true", NULL};
-        int fact_retval = taucs_linsolve(AtA, &F, 0, NULL, NULL, options, NULL);
+        int fact_retval = taucs_linsolve(AtA, &F, 0, NULL, NULL, factor, NULL);
         if(fact_retval != TAUCS_SUCCESS) throw TaucsException("Factorization Failed");
     }
     end = clock();
@@ -149,7 +152,7 @@ void TaucsSolver::solve_linear_least_square(const TaucsMatrix& matrix, const Std
         std::vector<double> AtB3(num_col);
         TaucsAddOn::MulNonSymmMatrixVector(At, &(rhs.v1[0]), &(AtB1[0]));
         TaucsAddOn::MulNonSymmMatrixVector(At, &(rhs.v2[0]), &(AtB2[0]));
-        TaucsAddOn::MulNonSymmMatrixVector(At, &(rhs.v2[0]), &(AtB3[0]));
+        TaucsAddOn::MulNonSymmMatrixVector(At, &(rhs.v3[0]), &(AtB3[0]));
     end = clock();    
     // cerr << "Premultiply RHS: " << (end-start)/CPS << "s" << endl;
     
@@ -157,11 +160,9 @@ void TaucsSolver::solve_linear_least_square(const TaucsMatrix& matrix, const Std
     start = clock();
     {
         int solve_retval=0;
-        char* options[] = {"taucs.solve=true",NULL};
-        // char* options[] = {"taucs.factor.LLT=true",NULL};
-        solve_retval |= taucs_linsolve(AtA, &F, 1, &(results.v1[0]), &(AtB1[0]), options, NULL);
-        solve_retval |= taucs_linsolve(AtA, &F, 1, &(results.v2[0]), &(AtB2[0]), options, NULL);
-        solve_retval |= taucs_linsolve(AtA, &F, 1, &(results.v3[0]), &(AtB3[0]), options, NULL);       
+        solve_retval |= taucs_linsolve(AtA, &F, 1, &(results.v1[0]), &(AtB1[0]), solve, NULL);
+        solve_retval |= taucs_linsolve(AtA, &F, 1, &(results.v2[0]), &(AtB2[0]), solve, NULL);
+        solve_retval |= taucs_linsolve(AtA, &F, 1, &(results.v3[0]), &(AtB3[0]), solve, NULL);       
         if (solve_retval != TAUCS_SUCCESS) throw TaucsException("ERROR!!!! LL^t Solve Failed");
     }
     end = clock();

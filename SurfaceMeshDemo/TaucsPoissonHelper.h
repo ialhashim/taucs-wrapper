@@ -48,10 +48,23 @@ public:
         if(RHS) delete RHS;
         if(X) delete X;
     }   
+
+public:
+    void solve(string eweights, string vconstraint, string vinitial, string vsolution){
+        try{
+            create_lhs(eweights, vconstraint);
+            create_rhs(vconstraint, vinitial);
+            solve_factorized(vsolution);
+        } catch( std::exception& e ){
+            cerr << e.what() << endl;
+            exit(-1);
+        } 
+    }
     
+private:
     /// eproperty:     value of weights for L(i,j)
     /// vconstraint:   what's the strength of the initial guess?
-    void setup(string eproperty, string vconstraint){
+    void create_lhs(string eproperty, string vconstraint){
         qDebug() << "#vertices: " << mesh->n_vertices() << "";
         
         /// Retrieve edge weights
@@ -95,28 +108,9 @@ public:
         }
         TIMER qDebug() << "LHS Build time: " << timer.elapsed() << "ms";
     }
-        
-    /// vinitial:      where do I take the initial value?
-    /// vsolution:     where should I store the solution?
-    void solve(string vinitial, string vconstraint, string vsolution=VPOINT){     
-        Q_ASSERT(RHS!=NULL && LHS!=NULL && X!=NULL);
-        
-        /// Retrieve & fill RHS (first half is zeros)
-        Vector3VertexProperty  _vinitial = getVector3VertexProperty(vinitial);
-        ScalarVertexProperty _vconstraint = getScalarVertexProperty(vconstraint);
-        
-        /// Mesh => constraint vectors
-        TIMER timer.start();
-        {
-            foreach(Vertex v, mesh->vertices()){
-                RHS->v1[ncols + v.idx()] = _vinitial[v].x()*_vconstraint[v];
-                RHS->v2[ncols + v.idx()] = _vinitial[v].y()*_vconstraint[v];
-                RHS->v3[ncols + v.idx()] = _vinitial[v].z()*_vconstraint[v];
-            }
-        }
-        TIMER qDebug() << "Build RHS vector: " << timer.elapsed() << "ms";
-            
-#if 0
+
+public:
+    void print_matrix(){
         cout << "M: [" << LHS->column_dimension() << "x" << LHS->row_dimension() << "]" << endl;
         for(int irow=0; irow<LHS->row_dimension(); irow++){
             /// Print row of M
@@ -136,8 +130,30 @@ public:
             cout << "|";
             cout << endl;
         }        
-#endif
+    }
+    
+    /// vinitial:      where do I take the initial value?
+    /// vsolution:     where should I store the solution?
+    void create_rhs(string vconstraint, string vinitial=VPOINT){     
+        Q_ASSERT(RHS!=NULL && LHS!=NULL && X!=NULL);
         
+        /// Retrieve & fill RHS (first half is zeros)
+        Vector3VertexProperty  _vinitial = getVector3VertexProperty(vinitial);
+        ScalarVertexProperty _vconstraint = getScalarVertexProperty(vconstraint);
+        
+        /// Mesh => constraint vectors
+        TIMER timer.start();
+        {
+            foreach(Vertex v, mesh->vertices()){
+                RHS->v1[ncols + v.idx()] = _vinitial[v].x()*_vconstraint[v];
+                RHS->v2[ncols + v.idx()] = _vinitial[v].y()*_vconstraint[v];
+                RHS->v3[ncols + v.idx()] = _vinitial[v].z()*_vconstraint[v];
+            }
+        }
+        TIMER qDebug() << "Build RHS vector: " << timer.elapsed() << "ms";
+    }   
+
+    void solve_factorized(string vsolution=VPOINT){
         /// Factorize & Solve
         TIMER timer.start();
         {
