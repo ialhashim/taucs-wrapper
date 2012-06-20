@@ -1,0 +1,5 @@
+[TAUCS Linear Solver] Size: 12128 Factorization(s): 0.268569 3xSolve(s): 0.060952
+[TAUCS Linear Solver] Size: 24998 Factorization(s): 0.794842 3xSolve(s): 0.120735
+[TAUCS Linear Solver] Size: 49998 Factorization(s): 1.62049 3xSolve(s): 0.300376
+[TAUCS Linear Solver] Size: 99998 Factorization(s): 3.73353 3xSolve(s): 0.643003
+[TAUCS Linear Solver] Size: 194078 Factorization(s): 10.2122 3xSolve(s): 1.20952

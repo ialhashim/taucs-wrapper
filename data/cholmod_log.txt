@@ -1,0 +1,5 @@
+[CHOLMOD Linear Solver] Size: 12128 Factorization(s): 0.44 3xSolve(s): 0.036
+[CHOLMOD Linear Solver] Size: 24998 Factorization(s): 1.02 3xSolve(s): 0.084
+[CHOLMOD Linear Solver] Size: 49998 Factorization(s): 2.67 3xSolve(s): 0.179
+[CHOLMOD Linear Solver] Size: 99998 Factorization(s): 5.66 3xSolve(s): 0.543
+[CHOLMOD Linear Solver] Size: 194078 Factorization(s): 11 3xSolve(s): 0.979

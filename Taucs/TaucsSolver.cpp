@@ -169,8 +169,7 @@ void TaucsSolver::solve_linear_least_square(const TaucsMatrix& matrix, const Std
     double tsolve = (end-start)/CPS;
 
     /// Outputs times
-    cout << num_col << ", " << tfact << ", " << tsolve << "\n";
-
+    cout << "[TAUCS Linear Solver] Size: " << num_col << " Factorization(s): " << tfact << " 3xSolve(s): " << tsolve << "\n";
     
     /// I am done.. free up
     start = clock();

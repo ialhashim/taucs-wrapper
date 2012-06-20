@@ -60,6 +60,17 @@ mac{
     QMAKE_CXXFLAGS += -Wno-write-strings
 }
 
+# TO BE TESTED...
+win32{
+    # TAUCS Wrapper
+    #LIBS += -L$$PWD/../Taucs/lib -lTaucs
+
+    # TAUCS package
+    #LIBS += -L$$PWD/../Taucs/external/lib/win32
+    #LIBS += -llibf77blas -llibcblas -lliblapack -llibatlas -llibtstatlas
+    #LIBS += -lvcf2c -llibmetis -llibtaucs
+}
+
 #----------------------------------------------
 # INSTALL STEP DEFINITION (make install)
 # REQUIRES SUDO PRIVILEGES...
